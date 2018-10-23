@@ -1,14 +1,14 @@
 version: '2'
 services:
   zabbix-db:
-    image: zabbix/zabbix-db-mariadb
+    image: zabbix-server-mysql:ubuntu-<version>
     volumes:
       - zabbix-db-storage:/var/lib/mysql
       - backups:/backups
       - /etc/localtime:/etc/localtime:ro
     environment:
-      - MARIADB_USER=zabbix
-      - MARIADB_PASS=my_password
+      - MYSQL_USER=zabbix 
+      - MYSQL_PASSWORD=zabbix
   zabbix-server:
     image: zabbix/zabbix-3.0:latest
     depends_on:
